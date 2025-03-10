@@ -1,0 +1,318 @@
+@use "../Utils/variables";
+@use "../Utils/mixins";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: auto;
+    overflow-x: hidden;
+
+
+    /* Primera sección de la tienda de introducción */
+    .section_first {
+        @include mixins.widthAndheight(100vw, 100vh);
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 5vh 21vh 74vh;
+
+        /* Contenedor de banner de publicidad */
+        .containerBanner_span {
+            @include mixins.widthAndheight(100%, 100%);
+            @include mixins.flex-container(center, center, 0%); 
+            background-color: variables.$negro-fuerte;
+            box-shadow: #A8A8A8 1px 1px 15px 1px;
+            overflow: hidden;
+            position: relative;    
+
+            .inner_container {
+                @include mixins.widthAndheight(100%, 100%);
+                @include mixins.flex-container(center, center, 0%); 
+
+                position: relative;
+                /* Estilos para cada texto */
+                .span_text {
+                    position: absolute;
+                    width: 100%;
+                    text-align: center;
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 0.67rem;
+                    color: #FFFFFF;
+                    font-weight: bold;
+                    opacity: 0;
+                    transform: translateX(100%);
+                    transition: opacity 0.5s ease, transform 0.5s ease;
+                }
+            }
+        }
+
+        /* Contenedor de header y navegacion */
+        .container_header{
+                @include mixins.widthAndheight(100%, 100%);
+                @include mixins.flex-container(space-around, center, 24vw); 
+                border: 1px solid black;
+
+
+            /* Titulo de la tienda */
+            .header_tittle{
+
+                    font-family: variables.$fuente-titulo;
+                    @include mixins.widthAndheight(10%, 10%);
+                    @include mixins.font-style(4.5rem, variables.$negro-brillante, 0px, 0px, bold);
+                }
+
+                /* Lista con el menu de navegacion adentro */
+            .listDesordenada_nav{
+                    @include mixins.widthAndheight(100%, 100%);
+                    @include mixins.flex-container(center, center, 2vw); 
+                
+                    /* Botones del menú de navegación */
+                    .btn_nav {
+                        @include mixins.btn-style(transparent, none, 0px, none, none, 1px, 0.85rem);
+                        cursor: pointer; 
+                        padding: .5px;
+                        position: relative;
+                        transition: font-size 0.3s ease-in-out, font-weight 0.3s ease-in-out, background-color 0.3s ease-in-out;
+
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            bottom: 0;
+                            left: 50%;
+                            width: 0;
+                            height: .2px;
+                            background-color: black;
+                            transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+                        }
+
+                        &:hover {
+                            font-size: 0.9rem;
+                            font-weight: bold;
+
+                            &::after {
+                                width: 100%;
+                                left: 0;
+                            }
+                        }
+                    }                        
+                    
+                    i{
+                
+                        cursor: pointer;
+                        font-size: 1.1vw;
+                    }
+                }
+        }
+
+        /* Contenedor de carrusel de imagenes */
+        .container_figure{
+            overflow-x: hidden;
+            @include mixins.size-images(100%, 100%, center, no-repeat, cover);
+            position: relative;
+
+            .figure_carrusel{
+                display: flex;
+                width: calc(100vw * 3);
+                @include mixins.size-images(100%, 100%, center, no-repeat, cover);
+
+                .figure_images{
+                    flex-shrink: 0;
+                    @include mixins.size-images(100%, 100%, center, no-repeat, cover);
+                }
+            }
+        }
+    }
+
+    .section_second{
+        @include mixins.widthAndheight(100vw, 100vh);
+        @include mixins.flex-container(center, center, 0%); 
+        background-color: variables.$blanco-perlado;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 80% 20%;
+
+
+        .containner_oulet {
+            @include mixins.widthAndheight(100%, 100%);
+            @include mixins.flex-container(center, center, 0%);
+            overflow: hidden;
+            border: 1px solid black;
+        
+            .oulet_carrusel {
+                @include mixins.widthAndheight(95%, 85%);
+                overflow: hidden;
+                white-space: nowrap;
+                position: relative;
+        
+                .carrusel_track {
+                    @include mixins.widthAndheight(100%, 100%);
+                    @include mixins.flex-container(center, center, 3%);
+                    animation: scrollLoop 35s linear infinite;
+                }
+        
+                .carrusel_card {
+                    @include mixins.widthAndheight(19vw, 55vh);
+                    color: white;
+                    flex-shrink: 0;
+                    border-radius: 5px;
+                    box-shadow: variables.$gris-elegante-oscuro 1px 1px 15px 1px;
+                }
+            }
+        }
+        
+        @keyframes scrollLoop {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-33.33%);
+            }
+        }
+        
+        .containerOulet_span {
+            @include mixins.widthAndheight(100%, 100%);
+            @include mixins.flex-container(center, center, 0%);
+            overflow: hidden;
+            position: relative;
+        
+            .image_carrusel {
+                display: flex;
+                white-space: nowrap;
+                animation: moveRightInfinite 5000s linear infinite;
+            }
+        
+            .image_oulet {
+                width: 100vw;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        
+        @keyframes moveRightInfinite {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(100%);
+            }
+        }            
+    }
+
+    .section_three{
+        @include mixins.widthAndheight(100vw, 80vh);
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+        background-color: variables.$gris-perla-claro;
+
+        .container_categories{
+            @include mixins.flex-container(center, center, 2vw); 
+
+
+            .categoria_united{
+                @include mixins.widthAndheight(100%, 100%);
+                @include mixins.flex-container(center, center, 2vw); 
+
+            }
+
+            .image_categorie{
+                @include mixins.size-images(99%, 99%, center, no-repeat, cover);
+
+            }
+        }
+    }
+
+    .section_fourt{
+        @include mixins.widthAndheight(100vw, 80vh);
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+
+        .container_nosotros{
+            @include mixins.widthAndheight(95%, 100%);
+            @include mixins.flex-container(center, center, 2vw); 
+
+                .nosotros_info{
+                    @include mixins.widthAndheight(90%, 45%);
+                    @include mixins.flex-container(center, center, 2vw); 
+                    flex-direction: column;
+
+                    .info_icon{
+                        @include mixins.widthAndheight(100%, 100%);
+                        @include mixins.flex-container(center, center, 2vw); 
+
+
+                        .image_icon{
+                            @include mixins.size-images(60%, 17%, center, no-repeat, cover);
+                            margin-top: 3vw;
+                        }
+                    }
+                
+                .info_texto{
+                    @include mixins.widthAndheight(80%, 100%);
+
+
+                    .info_nosotros{
+                        font-family: variables.$fuente-texto;
+                        text-align: center;
+
+                    }
+                }
+            }
+        }
+    }
+
+    .section_five{
+        @include mixins.widthAndheight(100vw, 70vh);
+
+                /* Contenedor de carrusel de imagenes */
+                .container_events{
+                    overflow: hidden;
+                    @include mixins.size-images(100%, 100%, center, no-repeat, cover);
+                    position: relative;
+        
+
+                        .events_carrusel {
+                            display: flex;
+                            @include mixins.widthAndheight(100vw, 100%);
+                            transition: transform 1s ease-in-out;
+                        
+                        
+        
+                        .carruselEvents_images{
+                            flex-shrink: 0;
+                            @include mixins.size-images(100%, 100%, center, no-repeat, cover);
+                        }
+                    }
+                }
+    }
+
+    .section_six{
+        background-color: red;
+
+
+    }
+
+    section_seven{
+        background-color: red;
+
+
+    }
+    section_eight{
+        background-color: red;
+
+
+    }
+
+    footer{
+        background-color: red;
+
+
+    }
+
+
+}

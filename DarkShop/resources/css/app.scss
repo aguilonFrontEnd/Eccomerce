@@ -1,0 +1,20 @@
+@forward "Utils/variables";
+@forward 'Utils/mixins';
+
+
+/* // Importar archivos de configuración
+@import 'Config/configAdmin';
+@import 'Config/configUsers'; */
+/* 
+// Importar formularios
+@import 'Form/Login';
+@import 'Form/Register';
+ */
+/* // Importar index
+@import 'Index/indexAdmin'; */
+@import 'Index/indexPrincipal';
+/* @import 'Index/indexUsers';
+ */
+/* // Importar vistas generales
+@import 'viewAll/viewItems';
+ */

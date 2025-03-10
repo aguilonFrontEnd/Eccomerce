@@ -1,0 +1,39 @@
+/* Mixin General para alineación */
+@mixin flex-container($justify: center, $align: center, $gap: 0px) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+}
+
+@mixin widthAndheight($width, $height){
+    width: $width;
+    height: $height;
+}
+
+@mixin font-style($size, $color, $ancho, $alto, $negrilla){
+    font-size: $size;
+    color: $color;
+    letter-spacing: $ancho;
+    line-height: $alto;
+    font-weight: $negrilla;
+}
+
+@mixin btn-style($color, $border, $radius, $fontcolor, $ancho, $espaciado, $size){
+    background-color: $color;
+    border: $border;
+    border-radius: $radius;
+    color: $fontcolor;
+    font-weight: $ancho;
+    letter-spacing: $espaciado;
+    font-size: $size;
+    
+}
+
+@mixin size-images($alto, $ancho, $posicion, $repeticion, $adjuste){
+    height: $alto;
+    width: $ancho;
+    background-position: $posicion;
+    background-repeat: $repeticion;
+    background-size: $adjuste;
+}
