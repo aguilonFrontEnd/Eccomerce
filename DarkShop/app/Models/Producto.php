@@ -2,6 +2,12 @@
 
 namespace App\Models;
 
+ 
+use App\Models\Talla;
+use App\Models\Categoria;
+use App\Models\Inventario;
+use App\Models\Descuento;
+use App\Models\Valoracion;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -39,11 +45,6 @@ class Producto extends Model
     public function descuentos()
     {
         return $this->hasMany(Descuento::class);
-    }
-
-    public function comentarios()
-    {
-        return $this->hasMany(Comentario::class);
     }
 
     public function valoraciones()

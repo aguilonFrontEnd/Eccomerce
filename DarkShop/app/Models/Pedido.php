@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Usuario;
+use App\Models\DetallePedido;
+use App\Models\Pago;
+use App\Models\Envio;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

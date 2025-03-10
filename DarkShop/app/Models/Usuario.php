@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Rol;
+use App\Models\Pedido;
+use App\Models\Valoracion;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -37,11 +40,6 @@ class Usuario extends Authenticatable
     public function pedidos()
     {
         return $this->hasMany(Pedido::class);
-    }
-
-    public function comentarios()
-    {
-        return $this->hasMany(Comentario::class);
     }
 
     public function valoraciones()
